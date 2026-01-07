@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.panel{
+  background:#fff;
+  width:90%;
+  max-width:340px;
+  padding:22px;
+  border-radius:16px;
+  box-shadow:0 20px 40px rgba(0,0,0,.35);
+  display:none;
+}
+h2{text-align:center;margin-bottom:16px}
+select,button{
+  width:100%;
+  padding:12px;
+  margin-top:12px;
+  border-radius:10px;
+  border:1px solid #ccc;
+  font-size:15px;
+}
+button{
+  background:#2c5364;
+  color:#fff;
+  border:none;
+}
+.msg{
+  text-align:center;
+  margin-top:12px;
+  font-size:13px;
+  color:green;
+}
+</style>
+</head>
+
+<body>
+
+<div class="panel" id="adminPanel">
+  <h2>Admin Control</h2>
+
+  <select id="statusSelect">
+    <option value="off">Unavailable</option>
+    <option value="on">Available</option>
+  </select>
+
+  <button onclick="saveStatus()">Save Settings</button>
+  <div class="msg" id="msg"></div>
+</div>
+
+<script>
+/* 🔑 SIMPLE PASSWORD */
+const ADMIN_PASSWORD = "admin@123";  // 🔴 change this
+
+/* 🔐 Password Prompt */
+const pass = prompt("Enter admin password");
+if(pass === ADMIN_PASSWORD){
+  document.getElementById("adminPanel").style.display = "block";
+}else{
+  alert("Access denied");
+  window.location.href = "index.html"; // redirect user page
+}
+
+/* 🔥 Firebase Config */
+firebase.initializeApp({
+  apiKey: "AIzaSyAmLWlU0bPJfNR0sOtKyN5FGHGNWSDAFQI",
+  authDomain: "followers-f4d1a.firebaseapp.com",
+  databaseURL: "https://followers-f4d1a-default-rtdb.firebaseio.com",
+  projectId: "followers-f4d1a",
+  storageBucket: "followers-f4d1a.firebasestorage.app",
+  messagingSenderId: "28363866926",
+  appId: "1:28363866926:web:7b34dbf017e71b8e2f70bf"
+});
+
+const db = firebase.database();
+
+function saveStatus(){
+  const value = document.getElementById("statusSelect").value;
+  db.ref("orderControl").set({
+    status: value,
+    updatedAt: Date.now()
+  });
+  document.getElementById("msg").innerText = "Saved successfully";
+}
+</script>
+
+</body>
+</html>
