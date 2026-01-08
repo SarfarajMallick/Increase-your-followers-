@@ -78,8 +78,8 @@ button.disabled{background:#aaa;color:#fff;cursor:not-allowed}
 
   <!-- FORM -->
   <input type="text" id="name" placeholder="Your Name">
-  <input type="tel" id="number" placeholder="Indian Mobile Number (10 digits)">
-  <input type="text" id="username" placeholder="Instagram Username">
+  <input type="tel" id="number" placeholder="Mobile Number">
+  <input type="text" id="username" placeholder="Instagram Id link">
 
   <select id="plan">
     <option value="">Select a plan</option>
@@ -151,7 +151,7 @@ function order(){
   const indiaMobilePattern = /^[6-9][0-9]{9}$/;
   if(!indiaMobilePattern.test(number)){
     errorMsg.innerText =
-      "Enter a valid Indian mobile number (10 digits, starts with 6–9).";
+      "Enter a valid mobile number";
     return;
   }
 
