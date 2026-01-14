@@ -72,6 +72,7 @@ button.disabled{background:#aaa;color:#fff;cursor:not-allowed}
 
 <div class="card">
   <h1>🚀 Followers Boost</h1>
+  <h1>Private profile only followers available</h1>
   <div class="sub">Premium Instagram Growth Service</div>
 
   <div id="statusBox" class="status off">Checking availability…</div>
@@ -80,13 +81,13 @@ button.disabled{background:#aaa;color:#fff;cursor:not-allowed}
   <input type="tel" id="number" placeholder="Mobile Number">
   <input type="text" id="username" placeholder="Username">
   <input type="text" id="idLink" placeholder="Instagram ID Link">
-  <input type="text" id="upiId" placeholder="Your UPI ID">
 
   <select id="plan">
     <option value="">Select a plan</option>
     <option value="₹50 - 500 Followers">₹50 - 500 Followers</option>
     <option value="₹100 - 1000 Followers">₹100 - 1000 Followers</option>
     <option value="₹50 - 1000 Likes">₹50 - 1000 Likes</option>
+    <option value="₹20 - 500 Story seen">₹20 - 500 Story seen</option
   </select>
 
   <button id="orderBtn" class="disabled">Order via WhatsApp</button>
@@ -136,10 +137,9 @@ btn.onclick = function(){
   const number = document.getElementById("number").value.trim();
   const username = document.getElementById("username").value.trim();
   const idLink = document.getElementById("idLink").value.trim();
-  const upiId = document.getElementById("upiId").value.trim();
   const plan = document.getElementById("plan").value;
 
-  if(!name || !number || !username || !idLink || !upiId || !plan){
+  if(!name || !number || !username || !idLink || !plan){
     errorMsg.innerText = "Please fill all fields.";
     return;
   }
@@ -156,7 +156,6 @@ btn.onclick = function(){
     "Mobile: "+number+"%0A"+
     "Username: "+username+"%0A"+
     "Instagram Link: "+idLink+"%0A"+
-    "UPI ID: "+upiId+"%0A"+
     "Plan: "+plan;
 
   window.open(
